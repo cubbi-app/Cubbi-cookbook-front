@@ -3,8 +3,10 @@ server {
   server_name  <%= @application[:domains].join(" ") %> <%= node[:hostname] %>;
   access_log  <%= node[:nginx][:log_dir] %>/<%= @application[:domains].first %>.access.log;
 
+  root <%= @application[:absolute_document_root] %>;
+
   location / {
-	try_files '' <%= @application[:absolute_document_root] %>index.html =404;
+	rewrite (.*) index.html last;
   }
   
   # Block all svn access
