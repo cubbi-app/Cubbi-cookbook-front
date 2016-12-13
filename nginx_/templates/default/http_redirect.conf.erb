@@ -1,8 +1,0 @@
-server {
-    listen   80;
-    server_name unbounddigital14.evolero.com;
-
-    location / {
-      rewrite ^ http://unbound.evolero.com/$request_uri permanent;
-    }
-}
