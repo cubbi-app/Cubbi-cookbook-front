@@ -4,8 +4,7 @@ server {
   access_log  <%= node[:nginx][:log_dir] %>/<%= @application[:domains].first %>.access.log;
 
   location / {
-	root <%= @application[:absolute_document_root] %>
-    try_files $url index.html;
+	try_files '' <%= @application[:absolute_document_root] %>index.html =404;
   }
   
   # Block all svn access
